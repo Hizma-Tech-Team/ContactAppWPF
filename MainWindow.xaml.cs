@@ -18,12 +18,10 @@ using System.Windows.Shapes;
 
 namespace ContactAppWPF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        const string path = @"D:\User\Desktop\IskoInc\ContactAppWPF\assets\database.txt";
+        string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets", "database.txt");
+
         public MainWindow()
         {
             InitializeComponent();

@@ -21,3 +21,4 @@ D:\User\Desktop\IskoInc\ContactAppWPF\obj\Debug\net6.0-windows\ref\ContactAppWPF
 D:\User\Desktop\IskoInc\ContactAppWPF\obj\Debug\net6.0-windows\AlertBox.g.cs
 D:\User\Desktop\IskoInc\ContactAppWPF\obj\Debug\net6.0-windows\ContactAppWPF_MarkupCompile.lref
 D:\User\Desktop\IskoInc\ContactAppWPF\obj\Debug\net6.0-windows\AlertBox.baml
+D:\User\Desktop\IskoInc\ContactAppWPF\bin\Debug\net6.0-windows\assets\database.txt
