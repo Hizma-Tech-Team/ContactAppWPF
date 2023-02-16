@@ -28,7 +28,7 @@ namespace ContactAppWPF
             if (string.IsNullOrEmpty(txtName.Text) ||
                 string.IsNullOrEmpty(txtSurname.Text) ||
                 string.IsNullOrEmpty(txtEmail.Text) ||
-                string.IsNullOrEmpty(txtId.Text) ||
+                string.IsNullOrEmpty(txtNumber.Text)||
                 !dateBirthdate.SelectedDate.HasValue)
             {
                 MessageBox.Show("Please fill in all required fields.");
@@ -40,8 +40,8 @@ namespace ContactAppWPF
                 firstName = txtName.Text,
                 lastName = txtSurname.Text,
                 email = txtEmail.Text,
+                number = txtNumber.Text,
                 gender = (string)((ComboBoxItem)comboGender.SelectedItem).Content,
-                id = int.Parse(txtId.Text),
                 birthDate = dateBirthdate.SelectedDate.Value
             };
 

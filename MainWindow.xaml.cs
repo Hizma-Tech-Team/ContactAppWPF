@@ -1,27 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ContactAppWPF
 {
     public partial class MainWindow : Window
     {
         string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets", "database.txt");
-
         public MainWindow()
         {
             InitializeComponent();
@@ -38,8 +26,8 @@ namespace ContactAppWPF
                 firstNameTextBlock.Text = selectedContact.firstName;
                 lastNameTextBlock.Text = selectedContact.lastName;
                 emailTextBlock.Text = selectedContact.email;
+                numberTextBlock.Text = selectedContact.number;
                 genderTextBlock.Text = selectedContact.gender.ToString();
-                idTextBlock.Text = selectedContact.id.ToString();
                 birthDateTextBlock.Text = selectedContact.birthDate.ToString("dd/MM/yyyy");
             }
             else
@@ -47,7 +35,7 @@ namespace ContactAppWPF
                 firstNameTextBlock.Text = "";
                 lastNameTextBlock.Text = "";
                 birthDateTextBlock.Text = "";
-                idTextBlock.Text = "";
+                numberTextBlock.Text = "";
                 genderTextBlock.Text = "";
                 emailTextBlock.Text = "";
             }
@@ -71,12 +59,12 @@ namespace ContactAppWPF
 
                     Contact contact = new Contact()
                     {
-                        firstName = parts[1],
-                        lastName = parts[2],
-                        email = parts[3],
-                        gender = parts[4],
-                        id = int.Parse(parts[0]),
-                        birthDate = DateTime.Parse(parts[5]),
+                        firstName = parts[0],
+                        lastName = parts[1],
+                        email = parts[2],
+                        gender = parts[3],
+                        birthDate = DateTime.Parse(parts[4]),
+                        number = parts[5]
                     };
                     contacts.Add(contact);
                 } while (true);
@@ -100,7 +88,7 @@ namespace ContactAppWPF
             editContactDialog.txtName.Text = selectedContact.firstName;
             editContactDialog.txtSurname.Text = selectedContact.lastName;
             editContactDialog.txtEmail.Text = selectedContact.email;
-            editContactDialog.txtId.Text = selectedContact.id.ToString();
+            editContactDialog.txtNumber.Text = selectedContact.number;
             editContactDialog.dateBirthdate.SelectedDate = selectedContact.birthDate;
             editContactDialog.comboGender.SelectedItem = editContactDialog.comboGender
                 .Items
@@ -112,7 +100,7 @@ namespace ContactAppWPF
                 selectedContact.firstName = editContactDialog.txtName.Text;
                 selectedContact.lastName = editContactDialog.txtSurname.Text;
                 selectedContact.email = editContactDialog.txtEmail.Text;
-                selectedContact.id = int.Parse(editContactDialog.txtId.Text);
+                selectedContact.number = editContactDialog.txtNumber.Text;
                 selectedContact.birthDate = editContactDialog.dateBirthdate.SelectedDate.Value;
                 selectedContact.gender = (string)((ComboBoxItem)editContactDialog.comboGender.SelectedItem).Content;
 
@@ -142,7 +130,7 @@ namespace ContactAppWPF
             {
                 foreach (Contact contact in contacts)
                 {
-                    writer.WriteLine($"{contact.id},{contact.firstName},{contact.lastName},{contact.email},{contact.gender.ToString()},{contact.birthDate.ToString()}");
+                    writer.WriteLine($"{contact.firstName},{contact.lastName},{contact.email},{contact.gender.ToString()},{contact.birthDate.ToString()},{contact.number}");
                 }
             }
         }
